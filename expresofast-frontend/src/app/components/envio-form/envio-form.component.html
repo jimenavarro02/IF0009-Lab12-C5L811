@@ -1,0 +1,33 @@
+<div class="container my-4">
+  <h2>Registrar Nuevo Envío</h2>
+
+  <div *ngIf="mensaje" class="alert alert-success">{{ mensaje }}</div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <form (ngSubmit)="registrar()">
+    <div class="mb-3">
+      <label for="numeroRastreo" class="form-label">Número de Rastreo (Opcional):</label>
+      <input type="text" id="numeroRastreo" class="form-control" [(ngModel)]="numeroRastreo" name="numeroRastreo" placeholder="Ej: EXP-2026-1001">
+    </div>
+
+    <div class="mb-3">
+      <label for="destinatario" class="form-label">Destinatario *:</label>
+      <input type="text" id="destinatario" class="form-control" [(ngModel)]="destinatario" name="destinatario" required placeholder="Nombre del destinatario">
+    </div>
+
+    <div class="mb-3">
+      <label for="direccionDestino" class="form-label">Dirección de Destino *:</label>
+      <input type="text" id="direccionDestino" class="form-control" [(ngModel)]="direccionDestino" name="direccionDestino" required placeholder="Dirección exacta">
+    </div>
+
+    <div class="mb-3">
+      <label for="montoFlete" class="form-label">Monto del Flete *:</label>
+      <input type="number" id="montoFlete" class="form-control" [(ngModel)]="montoFlete" name="montoFlete" required placeholder="0.00">
+    </div>
+
+    <button type="submit" class="btn btn-primary me-2" [disabled]="guardando">
+      {{ guardando ? 'Guardando...' : 'Registrar Envío' }}
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="volver()">Limpiar</button>
+  </form>
+</div>
